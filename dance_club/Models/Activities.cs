@@ -12,12 +12,15 @@ namespace dance_club.Models
         [Key]
         public int ActivityID { get; set; }
 
+        [Display(Name = "Nazwa zajęć")]
         public String Name { get; set; }
+        [Display(Name = "Opis")]
         public String Description { get; set; }
 
         public DateTime Act_Start { get; set; }
         public DateTime Act_End { get; set; }
 
+        [Display(Name = "Cena zajęć(zł)")]
         public int Price { get; set; }
 
         public int EmployeeID { get; set; }

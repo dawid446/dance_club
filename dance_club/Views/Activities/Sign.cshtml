@@ -1,0 +1,77 @@
+﻿@model dance_club.Models.Activities
+
+
+
+<h2>Zapisz</h2>
+
+<h3>Chcesz zapisać się na takie zajęcia?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Categories.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categories.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employees.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employees.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Act_Start)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Act_Start)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Act_End)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Act_End)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Zapisz" class="btn btn-success btn-lg" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

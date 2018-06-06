@@ -11,6 +11,7 @@ namespace dance_club.Models
         [Key]
         public int CategoryID { get; set; }
 
+        [Display(Name = "Kategoria zajęć")]
         public String Name { get; set; }
 
         public virtual ICollection<Activities> Activities { get; set; }
