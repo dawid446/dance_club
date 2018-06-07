@@ -1,14 +1,9 @@
 ﻿@model IEnumerable<dance_club.Models.Employees>
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Pracownicy</h2>
+
 <table class="table">
     <tr>
         <th>
@@ -17,12 +12,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Surname)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hire_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Birth_date)
-        </th>
+       
         <th></th>
     </tr>
 
@@ -35,15 +25,8 @@
             @Html.DisplayFor(modelItem => item.Surname)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Hire_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Birth_date)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeID }) |
             @Html.ActionLink("Details", "Details", new { id=item.EmployeeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeID })
+        
         </td>
     </tr>
 }

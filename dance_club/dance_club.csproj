@@ -288,7 +288,9 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -340,7 +342,7 @@
     <Content Include="Views\Categories\Delete.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
-    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\AdminManager\Caterogies.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
     <Content Include="Views\Employees\Delete.cshtml" />
     <Content Include="Views\Employees\Details.cshtml" />
@@ -357,10 +359,12 @@
     <Content Include="Views\UserManager\Details.cshtml" />
     <Content Include="Views\UserManager\Edit.cshtml" />
     <Content Include="Views\UserManager\Index.cshtml" />
+    <Content Include="Views\AdminManager\Index.cshtml" />
+    <Content Include="Views\AdminManager\Activities.cshtml" />
+    <Content Include="Views\AdminManager\Employees.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AdminManager\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

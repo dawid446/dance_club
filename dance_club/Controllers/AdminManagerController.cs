@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dance_club.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,82 +9,30 @@ namespace dance_club.Controllers
 {
     public class AdminManagerController : Controller
     {
-        // GET: AdminManager
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
+
             return View();
         }
-
-        // GET: AdminManager/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Activities()
         {
-            return View();
+            
+            return View(db.Activities.ToList());
         }
 
-        // GET: AdminManager/Create
-        public ActionResult Create()
+       
+        public ActionResult Caterogies()
         {
-            return View();
+            return View(db.Activities.ToList());
         }
 
-        // POST: AdminManager/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+       
+        public ActionResult Employees()
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(db.Employees.ToList());
         }
 
-        // GET: AdminManager/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: AdminManager/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AdminManager/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: AdminManager/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+       
     }
 }

@@ -1,64 +1,62 @@
 ﻿@model IEnumerable<dance_club.Models.Activities>
-
+@using Microsoft.AspNet.Identity
 
 
 <h2>Oferta</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <div class="row">
-<div class="col">
+    <div class="col">
 
-    <div class="list-group">
-        <a href="/Activities/Index/" class="list-group-item list-group-item-action active">Wszystkie</a>
-        @foreach (var item in ViewBag.List)
-    {
+        <div class="list-group">
+            <a href="/Activities/Index/" class="list-group-item list-group-item-action active">Wszystkie</a>
+            @foreach (var item in ViewBag.List)
+            {
 
 
-        <a href="/Activities/Index/@item.CategoryID" class="list-group-item list-group-item-action">@item.Name</a>
+                <a href="/Activities/Index/@item.CategoryID" class="list-group-item list-group-item-action">@item.Name</a>
 
-}
+            }
+        </div>
     </div>
-</div>
-<div class="col-8">
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Categories.Name)
-            </th>
-           
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    <div class="col-8">
+        <table class="table">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Categories.Name)
-                </td>
-                
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                   
-                    @Html.ActionLink("Details", "Details", new { id = item.ActivityID }, new { @class="btn btn-lng btn-info" }) 
-                 
-                </td>
-            </tr>
-        }
+                <th>
+                    @Html.DisplayNameFor(model => model.Categories.Name)
+                </th>
 
-    </table>
-</div>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categories.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                       
+                        @Html.ActionLink("Opis", "Details", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-info" })
+                        @Html.ActionLink("Zapisz mnie", "Sign", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-success" })
+                        
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
 </div>

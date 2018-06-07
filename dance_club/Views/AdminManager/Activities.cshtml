@@ -1,0 +1,69 @@
+﻿@model IEnumerable<dance_club.Models.Activities>
+
+@{
+    ViewBag.Title = "Activities";
+}
+
+<h2>Activities</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Categories.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employees.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Act_Start)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Act_End)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categories.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employees.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Act_Start)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Act_End)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", "Activities", new { id = item.ActivityID}, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Opis", "Details", "Activities", new { id = item.ActivityID }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Usuń", "Delete", "Activities", new { id = item.ActivityID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

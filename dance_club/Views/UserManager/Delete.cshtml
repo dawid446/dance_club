@@ -1,14 +1,11 @@
 ﻿@model dance_club.Models.Activities
 
-@{
-    ViewBag.Title = "Delete";
-}
 
-<h2>Delete</h2>
+<h2>Wypisz się</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Chcesz na pewno wypisać się z zajęc?</h3>
 <div>
-    <h4>Activities</h4>
+    <h4>Zajęcia</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -73,8 +70,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-lg btn-danger" /> |
+            @Html.ActionLink("Wróć", "Index")
         </div>
     }
 </div>

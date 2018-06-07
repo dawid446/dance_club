@@ -22,6 +22,15 @@ namespace dance_club.Controllers
       
             user = User.Identity.GetUserId();
             var activities = db.Activities.Where(s=> s.Users_Activities.Any(c=> c.UserId == user)).Include(a => a.Categories);
+            if(activities.Any())
+            {
+                ViewBag.Info = "Twoje aktualne zajęcia";
+               
+            }else
+            {
+                ViewBag.Info = "Nie jesteś zapisany na żadne zajęcia. Zapisz sie!";
+            }
+
             return View(activities.ToList());
 
         }
@@ -123,8 +132,10 @@ namespace dance_club.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Activities activities = db.Activities.Find(id);
-            db.Activities.Remove(activities);
+            user = User.Identity.GetUserId();
+            Users_Activities users_Activities = db.Users_Activities.Where(s => s.UserId == user && s.ActivityID == id).FirstOrDefault();
+           
+            db.Users_Activities.Remove(users_Activities);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
