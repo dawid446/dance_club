@@ -24,7 +24,7 @@ namespace dance_club.Controllers
        
         public ActionResult Caterogies()
         {
-            return View(db.Activities.ToList());
+            return View(db.Categories.ToList());
         }
 
        

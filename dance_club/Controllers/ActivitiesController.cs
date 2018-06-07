@@ -14,7 +14,6 @@ namespace dance_club.Models
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Activities
         public ActionResult Index(int? id)
         {
             var activities = db.Activities.Include(a => a.Categories).Include(a => a.Employees);
@@ -55,7 +54,6 @@ namespace dance_club.Models
             return RedirectToAction("Index");
         }
 
-        // GET: Activities/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -71,7 +69,6 @@ namespace dance_club.Models
         }
 
 
-        // GET: Activities/Create
         public ActionResult Create()
         {
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
@@ -79,9 +76,7 @@ namespace dance_club.Models
             return View();
         }
 
-        // POST: Activities/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ActivityID,Name,Description,Act_Start,Act_End,Price,EmployeeID,CategoryID")] Activities activities)
@@ -90,7 +85,7 @@ namespace dance_club.Models
             {
                 db.Activities.Add(activities);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Activities", "AdminManager");
             }
 
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", activities.CategoryID);
@@ -115,9 +110,7 @@ namespace dance_club.Models
             return View(activities);
         }
 
-        // POST: Activities/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ActivityID,Name,Description,Act_Start,Act_End,Price,EmployeeID,CategoryID")] Activities activities)
@@ -126,14 +119,14 @@ namespace dance_club.Models
             {
                 db.Entry(activities).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Activities", "AdminManager");
             }
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", activities.CategoryID);
             ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "Name", activities.EmployeeID);
             return View(activities);
         }
 
-        // GET: Activities/Delete/5
+
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -148,7 +141,6 @@ namespace dance_club.Models
             return View(activities);
         }
 
-        // POST: Activities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -156,7 +148,7 @@ namespace dance_club.Models
             Activities activities = db.Activities.Find(id);
             db.Activities.Remove(activities);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Activities", "AdminManager");
         }
 
         protected override void Dispose(bool disposing)

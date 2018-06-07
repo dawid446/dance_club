@@ -1,13 +1,10 @@
 ﻿@model IEnumerable<dance_club.Models.Categories>
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
+<h2>Kategorie tańca</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Dodaj nowe", "Create", "Categories", null, new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -23,9 +20,10 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edytuj", "Edit", "Category", new { id = item.CategoryID }, new { @class = "btn btn-success" }) |
-            @Html.ActionLink("Opis", "Details", "Category", new { id = item.CategoryID }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("Usuń", "Delete", "Category", new { id = item.CategoryID }, new { @class = "btn btn-danger" })
+            <div class="btn-group">
+                @Html.ActionLink("Edytuj", "Edit", "Categories", new { id = item.CategoryID }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Usuń", "Delete", "Categories", new { id = item.CategoryID }, new { @class = "btn btn-danger" })
+            </div>
         </td>
     </tr>
 }

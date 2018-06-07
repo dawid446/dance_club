@@ -1,13 +1,11 @@
 ﻿@model IEnumerable<dance_club.Models.Employees>
 
 @{
-    ViewBag.Title = "Employees";
-}
 
-<h2>Employees</h2>
+<h2>Pracownicy</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nowy pracownik", "Create", "Employees", null, new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -41,9 +39,11 @@
             @Html.DisplayFor(modelItem => item.Birth_date)
         </td>
         <td>
-            @Html.ActionLink("Edytuj", "Edit", "Employees", new { id=item.EmployeeID }, new { @class="btn btn-success" }) |
-            @Html.ActionLink("Opis", "Details", "Employees", new { id=item.EmployeeID }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("Usuń", "Delete", "Employees", new { id=item.EmployeeID }, new { @class = "btn btn-danger" })
+            <div class="btn-group">
+                @Html.ActionLink("Edytuj", "Edit", "Employees", new { id = item.EmployeeID }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Opis", "Details", "Employees", new { id = item.EmployeeID }, new { @class = "btn btn-info" }) 
+                @Html.ActionLink("Usuń", "Delete", "Employees", new { id = item.EmployeeID }, new { @class = "btn btn-danger" }
+             </div>
         </td>
     </tr>
 }

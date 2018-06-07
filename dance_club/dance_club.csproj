@@ -340,7 +340,6 @@
     <Content Include="Views\Activities\Index.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Delete.cshtml" />
-    <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\AdminManager\Caterogies.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
