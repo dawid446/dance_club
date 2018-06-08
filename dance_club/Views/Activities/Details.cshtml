@@ -1,7 +1,7 @@
 ﻿@model dance_club.Models.Activities
 
 
-<h2> @Html.DisplayNameFor(model => model.Name)</h2>
+<h2> @Model.Name</h2>
 
 <div>
   
@@ -62,9 +62,7 @@
         <dd>
             @Html.DisplayFor(model => model.Price)
         </dd>
-
+        @Html.ActionLink("Zapisz mnie", "Sign", new { id = Model.ActivityID }, new { @class = "btn btn-block btn-success" })
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Wróć", "Index")
-</p>
+

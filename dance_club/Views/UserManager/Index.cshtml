@@ -4,7 +4,12 @@
 <div class="alert alert-success" role="alert">
     @ViewBag.Info
 </div>
-
+@if (ViewBag.Error == null)
+{
+<div class="alert alert-danger" role="alert">
+    @ViewBag.Error
+</div>
+}
 <h1>Zapisany na zajęcia</h1>
 
 
@@ -13,36 +18,37 @@
         <th>
             @Html.DisplayNameFor(model => model.Categories.Name)
         </th>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-       
+
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Categories.Name)
-        </td>
-        <
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            
-            @Html.ActionLink("Opis zajęć", "Details", "Activities", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-info" })
-            @Html.ActionLink("Wypisz się", "Delete", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-danger" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categories.Name)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+
+                @Html.ActionLink("Opis zajęć", "Details", "Activities", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-info" })
+                @Html.ActionLink("Wypisz się", "Delete", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -51,8 +51,14 @@
                     <td>
                        
                         @Html.ActionLink("Opis", "Details", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-info" })
+                        @if (item.User == false)
+                        {
                         @Html.ActionLink("Zapisz mnie", "Sign", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-success" })
-                        
+                        }else
+                        {
+                        @Html.ActionLink("Wypisz mnie", "Delete", "UserManager", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-danger" })
+                        }
+
                     </td>
                 </tr>
             }

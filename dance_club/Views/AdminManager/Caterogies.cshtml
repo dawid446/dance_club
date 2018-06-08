@@ -1,31 +1,46 @@
 ﻿@model IEnumerable<dance_club.Models.Categories>
 
+<div class="row">
+    <div class="col align-self-center">
+        <div class="list-group">
+            <a href="/AdminManager/Activities/" class="list-group-item list-group-item-action active">Zajęcia</a>
 
-<h2>Kategorie tańca</h2>
+            <a href="/AdminManager/Caterogies/" class="list-group-item list-group-item-action"> Kategorie zajęć</a>
 
-<p>
-    @Html.ActionLink("Dodaj nowe", "Create", "Categories", null, new { @class = "btn btn-success" })
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
+            <a href="/AdminManager/Employees/" class="list-group-item list-group-item-action"> Pracownicy</a>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            <div class="btn-group">
-                @Html.ActionLink("Edytuj", "Edit", "Categories", new { id = item.CategoryID }, new { @class = "btn btn-success" })
-                @Html.ActionLink("Usuń", "Delete", "Categories", new { id = item.CategoryID }, new { @class = "btn btn-danger" })
-            </div>
-        </td>
-    </tr>
-}
 
-</table>
+        </div>
+    </div>
+    <div class="col-8">
+        <h2>Kategorie tańca</h2>
+
+        <p>
+            @Html.ActionLink("Dodaj nowe", "Create", "Categories", null, new { @class = "btn btn-success" })
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            @Html.ActionLink("Edytuj", "Edit", "Categories", new { id = item.CategoryID }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Usuń", "Delete", "Categories", new { id = item.CategoryID }, new { @class = "btn btn-danger" })
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+</div>

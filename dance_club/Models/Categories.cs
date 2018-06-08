@@ -11,6 +11,7 @@ namespace dance_club.Models
         [Key]
         public int CategoryID { get; set; }
 
+        [Required]
         [Display(Name = "Kategoria zajęć")]
         public String Name { get; set; }
 

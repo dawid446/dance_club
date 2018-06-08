@@ -12,14 +12,18 @@ namespace dance_club.Models
         [Key]
         public int EmployeeID { get; set; }
 
+        [Required]
         [Display(Name="Imię")]
         public String Name { get; set; }
+        [Required]
         [Display(Name = "Nazwisko")]
         public String Surname { get; set; }
         public char Gender { get; set; }
         [Display(Name = "Data zatrudnienia")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime Hire_date { get; set; }
         [Display(Name = "Data urodzenia")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime Birth_date { get; set; }
 
      

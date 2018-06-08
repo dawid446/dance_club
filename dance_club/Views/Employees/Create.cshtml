@@ -1,7 +1,21 @@
 ﻿@model dance_club.Models.Employees
 
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/boostrap")
+    @Styles.Render("~/Content/css")
 
+}*@
 
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/moment.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+  <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+  <script src="~/Scripts/data.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    @*<link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />*@
 <h2>Dodaj pracownika</h2>
 
 @using (Html.BeginForm())
@@ -30,7 +44,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Hire_date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Hire_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Hire_date, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
                 @Html.ValidationMessageFor(model => model.Hire_date, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -38,21 +52,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Birth_date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Birth_date, "{0:dd/MM/yyyy}", new { @class = "date form-control" })
+                @Html.TextBoxFor(model => model.Birth_date, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
 
                 @Html.ValidationMessageFor(model => model.Birth_date, "", new { @class = "text-danger" })
             </div>
         </div>
-        <script>
-            $(function () {
-                $(".date").datetimepicker({
-                    format: 'DD/MM/YYYY hh:mm',
 
-                });
-
-                jQuery.validator.methods["date"] = function (value, element) { return true; }
-            });
-        </script>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -62,15 +67,8 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 
-}
-<script src="~/Scripts/bootstrap.js"></script>
-<script src="~/Scripts/jquery-3.3.1.js"></script>
-<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+

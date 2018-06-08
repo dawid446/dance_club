@@ -10,6 +10,7 @@ namespace dance_club.Models
     {
         [Key]
         public int TitleID { get; set; }
+
         public String Name { get; set; }
 
         public virtual ICollection<Employees_Titles> Employees_Titles { get; set; }

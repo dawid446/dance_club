@@ -16,12 +16,35 @@ namespace dance_club.Models
 
         public ActionResult Index(int? id)
         {
-            var activities = db.Activities.Include(a => a.Categories).Include(a => a.Employees);
+            string user = User.Identity.GetUserId();
+
+
+            var activities = db.Activities.Include(a => a.Categories).ToList();
             if(id.HasValue)
             {
-                activities = activities.Where(a => a.CategoryID == id);
+                activities = activities.Where(s => s.CategoryID == id).ToList();
             }
 
+            if(!String.IsNullOrEmpty(user))
+            {
+                var userList = db.Users_Activities.Where(s => s.UserId == user).ToList();
+
+                foreach (var item in activities)
+                {
+
+                    foreach (var item1 in userList)
+                    {
+                        if (item.ActivityID == item1.ActivityID)
+                        {
+                            item.User = true;
+                        }
+
+                    }
+
+                }
+
+            }
+            
             ViewBag.List = db.Categories.ToList();
             return View(activities.ToList());
         }
@@ -32,6 +55,8 @@ namespace dance_club.Models
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
+
             Activities activities = db.Activities.Find(id);
             if (activities == null)
             {
@@ -44,14 +69,24 @@ namespace dance_club.Models
         [ValidateAntiForgeryToken]
         public ActionResult Sign(int id)
         {
-            Activities activities = db.Activities.Find(id);
-            db.Users_Activities.Add(new Users_Activities {
-                ActivityID = activities.ActivityID,
-                UserId= User.Identity.GetUserId()
-                 });
+            string user = User.Identity.GetUserId();
+            var userList = db.Users_Activities.Where(s => s.UserId == user && s.ActivityID == id);
 
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if(userList == null)
+            {
+                Activities activities = db.Activities.Find(id);
+                db.Users_Activities.Add(new Users_Activities
+                {
+                    ActivityID = activities.ActivityID,
+                    UserId = User.Identity.GetUserId()
+                });
+                db.SaveChanges();
+            }else
+            {
+                ViewBag.Error = "Jesteś już zapisany na te zajęcia";
+            }
+            
+            return RedirectToAction("Index","UserManager");
         }
 
         public ActionResult Details(int? id)

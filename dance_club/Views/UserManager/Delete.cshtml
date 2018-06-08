@@ -1,11 +1,10 @@
 ﻿@model dance_club.Models.Activities
 
 
-<h2>Wypisz się</h2>
 
-<h3>Chcesz na pewno wypisać się z zajęc?</h3>
+<h3>Chcesz się wypisac z tych zajęc?</h3>
 <div>
-    <h4>Zajęcia</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -64,14 +63,22 @@
             @Html.DisplayFor(model => model.Price)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-lg btn-danger" /> |
-            @Html.ActionLink("Wróć", "Index")
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+         
         </div>
     }
 </div>

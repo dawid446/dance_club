@@ -1,34 +1,66 @@
 ﻿@model IEnumerable<dance_club.Models.Employees>
 
 
-
 <h2>Pracownicy</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Surname)
-        </th>
-       
-        <th></th>
-    </tr>
+<table id="myTable" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Surname)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.EmployeeID }) |
-        
-        </td>
-    </tr>
-}
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.ActionLink("O pracowniku", "Details", new { id = item.EmployeeID }, new { @class = "btn btn-info" }) |
+
+            </td>
+        </tr>
+    }
+        </tbody>
 
 </table>
+
+<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+@section Scripts{
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/r-2.2.1/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.16/r-2.2.1/datatables.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                responsive: true,
+                "language": {
+                    "lengthMenu": "Wyświetl _MENU_ rekordów na stronę",
+                    "zeroRecords": "Brak wyników",
+                    "info": "Strona _PAGE_ z _PAGES_",
+                    "infoEmpty": "",
+                    "infoFiltered": "(filtered from _MAX_ total records)",
+                    "search": "Wyszukaj"
+                }
+            });
+        });
+
+    </script>
+
+
+}

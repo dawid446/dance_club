@@ -14,13 +14,13 @@ namespace dance_club.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Employees
+
         public ActionResult Index()
         {
             return View(db.Employees.ToList());
         }
 
-        // GET: Employees/Details/5
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,15 +35,12 @@ namespace dance_club.Controllers
             return View(employees);
         }
 
-        // GET: Employees/Create
+
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Employees/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EmployeeID,Name,Surname,Hire_date,Birth_date")] Employees employees)
@@ -58,7 +55,7 @@ namespace dance_club.Controllers
             return View(employees);
         }
 
-        // GET: Employees/Edit/5
+
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,9 +70,7 @@ namespace dance_club.Controllers
             return View(employees);
         }
 
-        // POST: Employees/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EmployeeID,Name,Surname,Hire_date,Birth_date")] Employees employees)
@@ -89,7 +84,7 @@ namespace dance_club.Controllers
             return View(employees);
         }
 
-        // GET: Employees/Delete/5
+
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +99,7 @@ namespace dance_club.Controllers
             return View(employees);
         }
 
-        // POST: Employees/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

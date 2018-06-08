@@ -1,7 +1,19 @@
 ﻿@model IEnumerable<dance_club.Models.Employees>
 
-@{
 
+<div class="row">
+    <div class="col align-self-center">
+        <div class="list-group">
+            <a href="/AdminManager/Activities/" class="list-group-item list-group-item-action active">Zajęcia</a>
+
+            <a href="/AdminManager/Caterogies/" class="list-group-item list-group-item-action"> Kategorie zajęć</a>
+
+            <a href="/AdminManager/Employees/" class="list-group-item list-group-item-action"> Pracownicy</a>
+
+
+        </div>
+    </div>
+    <div class="col-8">
 <h2>Pracownicy</h2>
 
 <p>
@@ -42,10 +54,12 @@
             <div class="btn-group">
                 @Html.ActionLink("Edytuj", "Edit", "Employees", new { id = item.EmployeeID }, new { @class = "btn btn-success" })
                 @Html.ActionLink("Opis", "Details", "Employees", new { id = item.EmployeeID }, new { @class = "btn btn-info" }) 
-                @Html.ActionLink("Usuń", "Delete", "Employees", new { id = item.EmployeeID }, new { @class = "btn btn-danger" }
+                @Html.ActionLink("Usuń", "Delete", "Employees", new { id = item.EmployeeID }, new { @class = "btn btn-danger" })
              </div>
         </td>
     </tr>
 }
 
 </table>
+        </div>
+</div>
