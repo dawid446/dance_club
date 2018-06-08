@@ -104,6 +104,7 @@ namespace dance_club.Models
         }
 
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
@@ -128,7 +129,7 @@ namespace dance_club.Models
             return View(activities);
         }
 
-        // GET: Activities/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -162,6 +163,7 @@ namespace dance_club.Models
         }
 
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

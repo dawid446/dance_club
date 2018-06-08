@@ -10,6 +10,7 @@ using dance_club.Models;
 
 namespace dance_club.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

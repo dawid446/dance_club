@@ -35,7 +35,7 @@ namespace dance_club.Controllers
             return View(employees);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -55,7 +55,7 @@ namespace dance_club.Controllers
             return View(employees);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,7 +84,7 @@ namespace dance_club.Controllers
             return View(employees);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

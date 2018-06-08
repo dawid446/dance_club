@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace dance_club.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminManagerController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
