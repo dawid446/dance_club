@@ -1,5 +1,13 @@
 ﻿@model dance_club.Models.Activities
 
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger" role="alert">
+        @Html.ValidationMessage("Error")
+    </div>
+}
+
 <h3>Chcesz zapisać się na takie zajęcia?</h3>
 <div>
     <hr />
@@ -62,12 +70,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Zapisz" class="btn btn-success btn-lg" /> 
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Zapisz" class="btn btn-success btn-lg" />
+            @Html.ActionLink("Wróć do oferty", "Index",null, new { @class="btn btn-primary" })
         </div>
     }
 </div>

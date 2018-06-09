@@ -62,7 +62,15 @@
         <dd>
             @Html.DisplayFor(model => model.Price)
         </dd>
+        @if (Model.User == false)
+        {
         @Html.ActionLink("Zapisz mnie", "Sign", new { id = Model.ActivityID }, new { @class = "btn btn-block btn-success" })
+        }
+        else
+        {
+        @Html.ActionLink("Wypisz mnie", "Delete", "UserManager", new { id = Model.ActivityID }, new { @class = "btn btn-block btn-danger" })
+        }
+
     </dl>
 </div>
 

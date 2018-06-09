@@ -58,6 +58,18 @@ namespace dance_club.Models
             
 
             Activities activities = db.Activities.Find(id);
+            
+            string user = User.Identity.GetUserId();
+            if (!String.IsNullOrEmpty(user))
+            {
+                var userElement = db.Users_Activities.Where(s => s.UserId == user).FirstOrDefault();
+
+                if(userElement.ActivityID == activities.ActivityID)
+                {
+                    activities.User = true;
+                }
+            }
+
             if (activities == null)
             {
                 return HttpNotFound();
@@ -70,7 +82,7 @@ namespace dance_club.Models
         public ActionResult Sign(int id)
         {
             string user = User.Identity.GetUserId();
-            var userList = db.Users_Activities.Where(s => s.UserId == user && s.ActivityID == id);
+            var userList = db.Users_Activities.Where(s => s.UserId == user && s.ActivityID == id).FirstOrDefault();
 
             if(userList == null)
             {
@@ -81,9 +93,13 @@ namespace dance_club.Models
                     UserId = User.Identity.GetUserId()
                 });
                 db.SaveChanges();
-            }else
+                ViewBag.Error = null;
+            }
+            else
             {
-                ViewBag.Error = "Jesteś już zapisany na te zajęcia";
+                ModelState.AddModelError("Error","Jesteś już zapisany na te zajęcia");
+                return View(db.Activities.Find(id));
+
             }
             
             return RedirectToAction("Index","UserManager");
