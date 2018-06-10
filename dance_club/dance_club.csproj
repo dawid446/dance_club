@@ -193,6 +193,7 @@
     <Compile Include="Controllers\AdminManagerController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\Employees_TitlesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TitlesController.cs" />
@@ -229,6 +230,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\2.jpg" />
+    <Content Include="Content\img\3.jpg" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -241,7 +244,7 @@
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\chosen.css" />
     <Content Include="Content\d1.png" />
-    <Content Include="Content\dance-1566852_960_720.jpg" />
+    <Content Include="Content\img\1.jpg" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -361,6 +364,7 @@
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
+    <None Include="Properties\PublishProfiles\JustDance - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -445,7 +449,6 @@
     <Content Include="Views\Employees\Create.cshtml" />
     <Content Include="Views\Employees\Delete.cshtml" />
     <Content Include="Views\Employees\Details.cshtml" />
-    <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Titles\Create.cshtml" />
     <Content Include="Views\Titles\Delete.cshtml" />
@@ -457,6 +460,11 @@
     <Content Include="Views\AdminManager\Activities.cshtml" />
     <Content Include="Views\AdminManager\Employees.cshtml" />
     <Content Include="Views\UserManager\Delete.cshtml" />
+    <Content Include="Views\Employees_Titles\Create.cshtml" />
+    <Content Include="Views\Employees_Titles\Delete.cshtml" />
+    <Content Include="Views\Employees_Titles\Details.cshtml" />
+    <Content Include="Views\Employees_Titles\Edit.cshtml" />
+    <Content Include="Views\Employees_Titles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -51,6 +51,9 @@
                 @Html.ValidationMessageFor(model => model.Employees.Birth_date, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div control-label col-md-2>
+            Wybierz tytuł(*wymagane)
+        </div>
         <div class="col-md-6">
             @Html.DropDownListFor(m => m.titleList, Model.Title.Select(x => new SelectListItem { Text = x.Name, Value = x.TitleID.ToString() }), new { @class = "chosen-select", @multiple = "true", tabindex = "4", @selected = 3 })
         </div>

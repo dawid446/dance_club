@@ -1,0 +1,34 @@
+﻿@model dance_club.Models.Employees_Titles
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employees_Titles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Employees.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employees.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titles.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titles.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeTitleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

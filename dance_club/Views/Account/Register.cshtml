@@ -1,6 +1,6 @@
 ﻿@model dance_club.Models.RegisterViewModel
-<div class="row justify-content-center">
-    <div class="col-md-auto ">
+
+    <div class="col">
 
         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
@@ -48,12 +48,12 @@
             </div>
             <p>
                 <hr />
-                @Html.ActionLink("Zaloguj się", "Login", null, new { @class = "btn btn-secondary btn-lg btn-block" })
+                @Html.ActionLink("Zaloguj się", "Login", null, new { @class = "btn btn-secondary btn-lg" })
             </p>
 
         }
     </div>
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

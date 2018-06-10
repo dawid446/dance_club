@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col">
-
+        <h3>Kategorie</h3>
         <div class="list-group">
             <a href="/Activities/Index/" class="list-group-item list-group-item-action active">Wszystkie</a>
             @foreach (var item in ViewBag.List)
@@ -27,52 +27,81 @@
         </div>
     </div>
     <div class="col-8">
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Categories.Name)
-                </th>
+     <table id="myTable" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+         <thead>
+             <tr>
+                 <th>
+                     @Html.DisplayNameFor(model => model.Categories.Name)
+                 </th>
 
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
+                 <th>
+                     @Html.DisplayNameFor(model => model.Name)
+                 </th>
 
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th></th>
-            </tr>
-
+                 <th>
+                     @Html.DisplayNameFor(model => model.Price)
+                 </th>
+                 <th></th>
+             </tr>
+         </thead>
+         <tbody>
             @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Categories.Name)
-                    </td>
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categories.Name)
+                </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-
-                        @Html.ActionLink("Opis", "Details", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-info" })
-                        @if (item.User == false)
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <div class="btn-group">
+                    @Html.ActionLink("Opis", "Details", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-info" })
+                    @if (item.User == false)
+                     {
+                        @Html.ActionLink("Zapisz mnie", "Sign", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-success" })
+                     }
+                     else
                         {
-                            @Html.ActionLink("Zapisz mnie", "Sign", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-success" })
+                         @Html.ActionLink("Wypisz mnie", "Delete", "UserManager", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-danger" })
                         }
-                        else
-                        {
-                            @Html.ActionLink("Wypisz mnie", "Delete", "UserManager", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-danger" })
-                        }
-
-                    </td>
-                </tr>
-            }
-
+                    </div>
+                </td>
+            </tr>
+               }
+             </tbody>
         </table>
+        <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+        @section Scripts{
+
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/r-2.2.1/datatables.min.css" />
+
+            <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.16/r-2.2.1/datatables.min.js"></script>
+
+            <script>
+
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                responsive: true,
+                "language": {
+                    "lengthMenu": "Wyświetl _MENU_ rekordów na stronę",
+                    "zeroRecords": "Brak wyników",
+                    "info": "Strona _PAGE_ z _PAGES_",
+                    "infoEmpty": "",
+                    "infoFiltered": "(filtered from _MAX_ total records)",
+                    "search": "Wyszukaj"
+                }
+            });
+        });
+
+            </script>
+
+
+        }
     </div>
 </div>

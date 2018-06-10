@@ -50,7 +50,7 @@ namespace dance_club.Controllers
             {
                 db.Titles.Add(titles);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                 return RedirectToAction("Caterogies", "AdminManager");
             }
 
             return View(titles);
@@ -80,7 +80,7 @@ namespace dance_club.Controllers
             {
                 db.Entry(titles).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Caterogies", "AdminManager");
             }
             return View(titles);
         }
@@ -108,7 +108,7 @@ namespace dance_club.Controllers
             Titles titles = db.Titles.Find(id);
             db.Titles.Remove(titles);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Caterogies", "AdminManager");
         }
 
         protected override void Dispose(bool disposing)

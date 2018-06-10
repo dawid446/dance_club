@@ -18,7 +18,10 @@ namespace dance_club.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Employees.ToList());
+
+            var employees_Titles = db.Employees_Titles.Include(e => e.Employees).Include(e => e.Titles).OrderBy(s=>s.Employees.Surname);
+            
+            return View(employees_Titles.ToList());
         }
 
 
@@ -60,6 +63,7 @@ namespace dance_club.Controllers
             {
                 if (activities.titleList?.Length > 0)
                 {
+                   
                     foreach (var item in activities.titleList)
                     {
                         Employees_Titles titles = new Employees_Titles
@@ -67,10 +71,14 @@ namespace dance_club.Controllers
                             EmployeeID = activities.Employees.EmployeeID,
                             TitleID = item
                     };
+
+                    db.Employees_Titles.Add(titles);
                     }
-                    
+
+                    db.Employees.Add(activities.Employees);
+                
                 }
-                db.Employees.Add(activities.Employees);
+               
                 db.SaveChanges();
                 return RedirectToAction("Employees", "AdminManager");
             }
@@ -128,6 +136,7 @@ namespace dance_club.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Employees employees = db.Employees.Find(id);
+           
             db.Employees.Remove(employees);
             db.SaveChanges();
             return RedirectToAction("Employees", "AdminManager");
