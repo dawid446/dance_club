@@ -217,7 +217,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activities.cs" />
     <Compile Include="Controllers\ActivitiesController.cs" />
-    <Compile Include="Models\AcvitiviesViewModel.cs" />
+    <Compile Include="Models\ActivitiesViewModel.cs" />
     <Compile Include="Models\Employees_Titles.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Employees.cs" />
@@ -237,6 +237,9 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.css" />
     <Content Include="Content\d1.png" />
     <Content Include="Content\dance-1566852_960_720.jpg" />
     <Content Include="Content\font-awesome.css" />
@@ -255,6 +258,8 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\data.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
@@ -444,7 +449,6 @@
     <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Titles\Create.cshtml" />
     <Content Include="Views\Titles\Delete.cshtml" />
-    <Content Include="Views\Titles\Details.cshtml" />
     <Content Include="Views\Titles\Edit.cshtml" />
     <Content Include="Views\Titles\Index.cshtml" />
     <Content Include="Views\Activities\Sign.cshtml" />

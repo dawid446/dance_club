@@ -1,10 +1,17 @@
 ﻿@model dance_club.Models.Activities
 
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row" style="padding-bottom:20px">
+
+        @Html.ActionLink("Panel używkwnika", "Index", "UserManager", null, new { @class = "btn btn-block btn-primary", Style = "padding-botom: 20px" })
+    </div>
+}
 
 <h2> @Model.Name</h2>
 
 <div>
-  
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -64,11 +71,11 @@
         </dd>
         @if (Model.User == false)
         {
-        @Html.ActionLink("Zapisz mnie", "Sign", new { id = Model.ActivityID }, new { @class = "btn btn-block btn-success" })
+            @Html.ActionLink("Zapisz mnie", "Sign", new { id = Model.ActivityID }, new { @class = "btn btn-block btn-success" })
         }
         else
         {
-        @Html.ActionLink("Wypisz mnie", "Delete", "UserManager", new { id = Model.ActivityID }, new { @class = "btn btn-block btn-danger" })
+            @Html.ActionLink("Wypisz mnie", "Delete", "UserManager", new { id = Model.ActivityID }, new { @class = "btn btn-block btn-danger" })
         }
 
     </dl>

@@ -49,6 +49,7 @@ namespace dance_club.Models
             return View(activities.ToList());
         }
 
+        [Authorize]
         public ActionResult Sign(int? id)
         {
             if (id == null)
@@ -59,16 +60,7 @@ namespace dance_club.Models
 
             Activities activities = db.Activities.Find(id);
             
-            string user = User.Identity.GetUserId();
-            if (!String.IsNullOrEmpty(user))
-            {
-                var userElement = db.Users_Activities.Where(s => s.UserId == user).FirstOrDefault();
-
-                if(userElement.ActivityID == activities.ActivityID)
-                {
-                    activities.User = true;
-                }
-            }
+          
 
             if (activities == null)
             {
@@ -112,6 +104,20 @@ namespace dance_club.Models
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Activities activities = db.Activities.Find(id);
+            string user = User.Identity.GetUserId();
+
+            if (!String.IsNullOrEmpty(user))
+            {
+                var userElement = db.Users_Activities.Where(s => s.UserId == user && s.ActivityID == id).FirstOrDefault();
+                if(userElement != null)
+                {
+                    if (userElement.ActivityID == activities.ActivityID)
+                    {
+                        activities.User = true;
+                    }
+                }
+               
+            }
             if (activities == null)
             {
                 return HttpNotFound();

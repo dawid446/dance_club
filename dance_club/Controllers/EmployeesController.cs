@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using dance_club.Models;
+using Microsoft.AspNet.Identity;
 
 namespace dance_club.Controllers
 {
@@ -38,21 +39,43 @@ namespace dance_club.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            return View();
+           
+
+            ActivitiesViewModel ac = new ActivitiesViewModel
+            {
+               
+                Title = db.Titles.ToList()
+
+            };
+
+            return View(ac);
+        
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeID,Name,Surname,Hire_date,Birth_date")] Employees employees)
+        public ActionResult Create(ActivitiesViewModel activities)
         {
             if (ModelState.IsValid)
             {
-                db.Employees.Add(employees);
+                if (activities.titleList?.Length > 0)
+                {
+                    foreach (var item in activities.titleList)
+                    {
+                        Employees_Titles titles = new Employees_Titles
+                        {
+                            EmployeeID = activities.Employees.EmployeeID,
+                            TitleID = item
+                    };
+                    }
+                    
+                }
+                db.Employees.Add(activities.Employees);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Employees", "AdminManager");
             }
-
-            return View(employees);
+           
+            return View(activities);
         }
 
         [Authorize(Roles = "Admin")]
@@ -79,7 +102,7 @@ namespace dance_club.Controllers
             {
                 db.Entry(employees).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Employees", "AdminManager");
             }
             return View(employees);
         }
@@ -107,7 +130,7 @@ namespace dance_club.Controllers
             Employees employees = db.Employees.Find(id);
             db.Employees.Remove(employees);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Employees", "AdminManager");
         }
 
         protected override void Dispose(bool disposing)

@@ -3,6 +3,15 @@
 
 
 <h2>Oferta</h2>
+
+@if(User.Identity.IsAuthenticated)
+{
+<div class="row" style="padding-bottom:20px">
+
+    @Html.ActionLink("Panel używkwnika", "Index", "UserManager", null, new { @class = "btn btn-block btn-primary", Style = "padding-botom: 20px" })
+</div>
+}
+
 <div class="row">
     <div class="col">
 
@@ -49,14 +58,15 @@
                         @Html.DisplayFor(modelItem => item.Price)
                     </td>
                     <td>
-                       
+
                         @Html.ActionLink("Opis", "Details", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-info" })
                         @if (item.User == false)
                         {
-                        @Html.ActionLink("Zapisz mnie", "Sign", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-success" })
-                        }else
+                            @Html.ActionLink("Zapisz mnie", "Sign", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-success" })
+                        }
+                        else
                         {
-                        @Html.ActionLink("Wypisz mnie", "Delete", "UserManager", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-danger" })
+                            @Html.ActionLink("Wypisz mnie", "Delete", "UserManager", new { id = item.ActivityID }, new { @class = "btn btn-lng btn-danger" })
                         }
 
                     </td>

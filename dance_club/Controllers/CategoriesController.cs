@@ -36,7 +36,7 @@ namespace dance_club.Controllers
             {
                 db.Categories.Add(categories);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Caterogies", "AdminManager");
             }
 
             return View(categories);
@@ -66,7 +66,7 @@ namespace dance_club.Controllers
             {
                 db.Entry(categories).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Caterogies", "AdminManager");
             }
             return View(categories);
         }
@@ -91,9 +91,15 @@ namespace dance_club.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Categories categories = db.Categories.Find(id);
+            var activities = db.Activities.Where(s => s.CategoryID == categories.CategoryID).ToList();
+            if(activities != null)
+            {
+            db.Activities.RemoveRange(activities);
+            }
+            
             db.Categories.Remove(categories);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Caterogies", "AdminManager");
         }
 
         protected override void Dispose(bool disposing)

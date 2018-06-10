@@ -29,8 +29,14 @@
 
                     <li class="nav-item">@Html.ActionLink("Oferta", "Index", "Activities", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Pracownicy", "Index", "Employees", null, new { @class = "nav-link" })</li>
+                     @if (Request.IsAuthenticated)
+                     {
                     <li class="nav-item">@Html.ActionLink("Panel Użytkownika", "Index", "UserManager", null, new { @class = "nav-link" })</li>
+                     }
+                     @if (User.IsInRole("Admin"))
+                     {
                     <li class="nav-item">@Html.ActionLink("Panel Administratora", "Index", "AdminManager", null, new { @class = "nav-link" })</li>
+                     }
                     <li class="nav-item">@Html.ActionLink("Kontakt", "Contact", "Home", null, new { @class = "nav-link" })</li>
 
                 </ul>

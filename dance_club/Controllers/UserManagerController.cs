@@ -16,7 +16,7 @@ namespace dance_club.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public string user { get; set; }
 
-        // GET: UserManager
+        [Authorize]
         public ActionResult Index()
         {
       
@@ -36,7 +36,7 @@ namespace dance_club.Controllers
         }
 
 
-        // GET: UserManager/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -51,7 +51,7 @@ namespace dance_club.Controllers
             return View(activities);
         }
 
-        // POST: UserManager/Delete/5
+       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
