@@ -1,86 +1,11 @@
 ﻿
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" />
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css" media="print" />
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css" />
 
-
-<script src="~/Scripts/moment.js"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
 
 <address>
     <span class="fa fa-2x fa-instagram"> </span> instagram/justdance <br />
     <span class="fa fa-2x fa-facebook">  </span> facebook/justdance <br />
     <span class="fa fa-2x fa-address-card">  <br /> </span> Klaudia Jawor
 </address>
-
-<div class="row">
-    <div class="col-xs-9 col-xs-push-2">
-        <div class="box box-primary">
-            <div class="box-body no-padding">
-                <div id="calendar"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(document).ready(function () {
-        $('#calendar').fullCalendar({
-            header:
-            {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            buttonText: {
-                today: 'today',
-                month: 'month',
-                week: 'week',
-                day: 'day'
-            },
-            
-
-            events: function (start, end, timezone, callback) {
-                $.ajax({
-                    url: '/Home/GetCalendarData',
-                    type: "GET",
-                    dataType: "JSON",
-
-                    success: function (result) {
-                        var events = [];
-
-                        $.each(result, function (i, data) {
-                            events.push(
-                                {
-                                    title: data.Name,
-                                    description: data.Description,
-                                    start: moment(data.Act_Start),
-                                    end: moment(data.Act_End),
-                                   
-                                });
-                        });
-
-                        callback(events);
-                    }
-                });
-            },
-
-            eventRender: function (event, element) {
-                element.qtip(
-                    {
-                        content: event.description
-                    });
-            },
-
-            editable: false
-        });
-    });
-
-
-
-</script>
 
 
 
