@@ -2,6 +2,7 @@
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/moment.js"></script>
+<script src="~/Scripts/moment-with-locales.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
 <script src="~/Scripts/data.js"></script>
@@ -37,7 +38,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Act_Start, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Act_Start, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                @Html.TextBoxFor(model => model.Act_Start, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker1" })
                 @Html.ValidationMessageFor(model => model.Act_Start, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -45,7 +46,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Act_End, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Act_End, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                @Html.TextBoxFor(model => model.Act_End, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker1" })
 
                 @Html.ValidationMessageFor(model => model.Act_End, "", new { @class = "text-danger" })
             </div>

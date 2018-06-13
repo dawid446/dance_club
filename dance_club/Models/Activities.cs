@@ -19,11 +19,11 @@ namespace dance_club.Models
         public String Description { get; set; }
 
         [Display(Name = "Rozpoczęcie zajęć")]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy h:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy HH:mm tt}")]
         public DateTime Act_Start { get; set; }
 
         [Display(Name = "Zakończenie zajęć")]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy h:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy HH:mm tt}")]
         public DateTime Act_End { get; set; }
 
         [Display(Name = "Cena zajęć(zł)")]
