@@ -140,6 +140,7 @@ namespace dance_club.Controllers
             db.Employees.Remove(employees);
             db.SaveChanges();
             return RedirectToAction("Employees", "AdminManager");
+            
         }
 
         protected override void Dispose(bool disposing)

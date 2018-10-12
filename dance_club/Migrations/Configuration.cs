@@ -28,10 +28,10 @@ namespace dance_club.Migrations
                     roleResult = RoleManager.Create(new IdentityRole(roleName));
                 }
             }
-            //var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            //UserManager.AddToRole("ac228129-6c32-4636-a1c3-4e18eec2a89e", "Admin");
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            UserManager.AddToRole("74072028-07f5-4ed1-b3e8-c8b3ec3e2ee8", "Admin");
         }
 
-        
+
     }
 }
